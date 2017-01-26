@@ -22,18 +22,18 @@ local function plugin_exists( name )
 end
 
 local function list_all_plugins(only_enabled)
-  local tmp = check_markdown('\n\n@BeyondTeam')
+  local tmp = check_markdown('\n\nmonsterTG')
   local text = ''
   local nsum = 0
   for k, v in pairs( plugins_names( )) do
     --  ✔ enabled, ❌ disabled
-    local status = '*[Inactive]>>*'
+    local status = '*[غیرفعال]>>*'
     nsum = nsum+1
     nact = 0
     -- Check if is enabled
     for k2, v2 in pairs(_config.enabled_plugins) do
       if v == v2..'.lua' then 
-        status = '*[active]>>*'
+        status = '*[فعال]>>*'
       end
       nact = nact+1
     end
@@ -43,7 +43,7 @@ local function list_all_plugins(only_enabled)
       text = text..nsum..'.'..status..' '..v..' \n'
     end
   end
-  local text = text..'\n\n'..nsum..' *plugins installed*\n\n'..nact..' _plugins enabled_\n\n'..nsum-nact..' _plugins disabled_'..tmp
+  local text = text..'\n\n'..nsum..' *پلاگین نصب شده*\n\n'..nact..' _پلاگین فعال_\n\n'..nsum-nact..' _پلاگین غیرفعال_'..tmp
   return text
 end
 
@@ -52,13 +52,13 @@ local function list_plugins(only_enabled)
   local nsum = 0
   for k, v in pairs( plugins_names( )) do
     --  ✔ enabled, ❌ disabled
-    local status = '*[Inactive]>>*'
+    local status = '*[غیرفعال]>>*'
     nsum = nsum+1
     nact = 0
     -- Check if is enabled
     for k2, v2 in pairs(_config.enabled_plugins) do
       if v == v2..'.lua' then 
-        status = '*[active]>>*'
+        status = '*[فعال]>>*'
       end
       nact = nact+1
     end
@@ -68,7 +68,7 @@ local function list_plugins(only_enabled)
      -- text = text..v..'  '..status..'\n'
     end
   end
-  local text = text.."\n_All Plugins Reloaded_\n\n"..nact.." *Plugins Enabled*\n"..nsum.." *Plugins Installed*\n\n@BeyondTeam"
+  local text = text.."\n_All Plugins Reloaded_\n\n"..nact.." *Plugins Enabled*\n"..nsum.." *Plugins Installed*\n\nmonsterTG"
 return text
 end
 
